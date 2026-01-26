@@ -1,0 +1,1 @@
+to run the code : npx playwright test
