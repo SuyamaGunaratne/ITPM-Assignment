@@ -50,6 +50,14 @@ export default defineConfig({
       use: { ...devices['Desktop Safari'] },
     },
 
+    // {
+    //   use: {
+    //   ignoreHTTPSErrors: true, // Vital for campus networks
+    //   actionTimeout: 15000,    // Time to wait for each action (like fill)
+    //   navigationTimeout: 30000,
+    //   },
+    // }
+
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
@@ -70,6 +78,8 @@ export default defineConfig({
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
   ],
+
+  // playwright.config.js
 
   /* Run your local dev server before starting the tests */
   // webServer: {
