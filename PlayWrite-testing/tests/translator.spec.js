@@ -50,8 +50,6 @@ test.describe('SwiftTranslator Automation Tests', () => {
 
 
     test('Test 0003', async ({ page }) => {
-
-        await 
     });
 
 
