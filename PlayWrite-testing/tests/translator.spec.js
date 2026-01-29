@@ -2,17 +2,15 @@
 
 import { test, expect } from '@playwright/test';
 
-
-
 test.describe('SwiftTranslator Automation Tests', () => {
 
     const tests = [
-        { input: "ammaa", expected: "අම්මා" },
-        { input: "kathaa karanna", expected: "කතා කරන්න" },
-        { input: "magee nama nimal", expected: "මගේ නම නිමල්" },
-        { input: "oyaa kohomadha?", expected: "ඔයා කොහොමද?" },
-        { input: "api gedhara yanawaa", expected: "අපි ගෙදර යනwආ" },
-        { input: "mama Sinhala kathaa karanawa", expected: "මම Sinhala කතා කරනwඅ" },
+        { id: "0001", input: "ammaa", expected: "අම්මා" },
+        { id: "0002", input: "kathaa karanna", expected: "කතා කරන්න" },
+        { id: "0003", input: "magee nama nimal", expected: "මගේ නම නිමල්" },
+        { id: "0004", input: "oyaa kohomadha?", expected: "ඔයා කොහොමද?" },
+        { id: "0005", input: "api gedhara yanawaa", expected: "අපි ගෙදර යනwආ" },
+        { id: "0006", input: "mama Sinhala kathaa karanawa", expected: "මම Sinhala කතා කරනwඅ" },
     ];
 
     test.beforeEach(async ({ page }) => {
@@ -23,7 +21,7 @@ test.describe('SwiftTranslator Automation Tests', () => {
     for (const scenario of tests) {
         test(`Functional Test ${scenario.input}`, async ({ page }) => {
           const inputField = page.locator('textarea[placeholder="Input Your Singlish Text Here."]');
-          const outputField = page.locator('.whitespace-pre-wrap').nth(0);
+          const outputField = page.locator('div.whitespace-pre-wrap').nth(0);
     
           // Steps for functional test cases [cite: 303-305]
           await inputField.fill(scenario.input);
@@ -33,7 +31,7 @@ test.describe('SwiftTranslator Automation Tests', () => {
     
           const actualOutput = await outputField.innerText();
           // Log the actual output for debugging
-          //console.log(`Test ${scenario.id} | Input: ${scenario.input} | Expected: ${scenario.expected} | Actual: '${actualOutput.trim()}'`);
+          console.log(`Test ${scenario.id} | Input: ${scenario.input} | Expected: ${scenario.expected} | Actual: '${actualOutput.trim()}'`);
           // Assert that the generated output matches your expected output
           expect(actualOutput.trim()).toBe(scenario.expected);
         });
